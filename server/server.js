@@ -23,6 +23,14 @@ app.post("/todos", (req, res) => {
     });
 });
 
+app.get("/todos",(req,res)=>{
+Todo.find().then(allTodos=>{
+    res.send({allTodos});
+},(e)=>{
+    res.status(400).send(e);
+});
+});
+
 app.listen(3000, () => {
   console.log("server start up");
 });
